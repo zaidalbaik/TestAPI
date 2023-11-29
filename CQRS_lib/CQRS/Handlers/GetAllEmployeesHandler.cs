@@ -1,7 +1,7 @@
 ﻿using CQRS_lib.CQRS.Queries;
-using MediatR;
 using CQRS_lib.Data;
 using CQRS_lib.Models;
+using MediatR;
 
 namespace CQRS_lib.CQRS.Handlers
 {

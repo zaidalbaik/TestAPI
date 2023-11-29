@@ -1,8 +1,8 @@
 using CQRS_lib;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using MQRS_lib.Data;
-using MQRS_lib.Data.Interceptors;
+using CQRS_lib.Data;
+using CQRS_lib.Data.Interceptors;
 
 var builder = WebApplication.CreateBuilder(args);
 

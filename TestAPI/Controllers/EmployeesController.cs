@@ -1,23 +1,19 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using TestAPI.Data;
-using MQRS_lib.Models;
-using MediatR;
+﻿using CQRS_lib.CQRS.Commands;
 using CQRS_lib.CQRS.Queries;
-using CQRS_lib.CQRS.Commands;
-
+using CQRS_lib.Data;
+using CQRS_lib.Models;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore; 
 namespace TestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly AppDbContext _dbContext;
+        private readonly APIDbContext _dbContext;
         private readonly IMediator _mediator;
-        public EmployeesController(AppDbContext dbContext, IMediator mediator)
+        public EmployeesController(APIDbContext dbContext, IMediator mediator)
         {
             _dbContext = dbContext;
             _mediator = mediator;
@@ -81,7 +77,7 @@ namespace TestAPI.Controllers
                 var empIsFound = await _dbContext.Employees.SingleOrDefaultAsync(e => e.Id == employee.Id);
                 if (empIsFound == null)
                 {
-                    _mediator.Send(new InsertEmployeeCommand(employee));
+                    await _mediator.Send(new InsertEmployeeCommand(employee));
                     return Ok(employee);
                 }
                 else
