@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAPI", "TestAPI\TestAPI.csproj", "{99360AD5-3313-4195-B9DB-736207D58353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS_lib", "CQRS_lib\CQRS_lib.csproj", "{0B9D2227-88CD-4AE4-82D6-F55D0865DBD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99360AD5-3313-4195-B9DB-736207D58353}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99360AD5-3313-4195-B9DB-736207D58353}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99360AD5-3313-4195-B9DB-736207D58353}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99360AD5-3313-4195-B9DB-736207D58353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B9D2227-88CD-4AE4-82D6-F55D0865DBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9D2227-88CD-4AE4-82D6-F55D0865DBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9D2227-88CD-4AE4-82D6-F55D0865DBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9D2227-88CD-4AE4-82D6-F55D0865DBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D81EB705-7D2B-4BEE-BC84-E4102EDC5D2D}
+	EndGlobalSection
+EndGlobal
