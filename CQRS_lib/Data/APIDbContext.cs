@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CQRS_lib.Data.Config;
-using CQRS_lib.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CQRS_lib.Data.Models;
 
 namespace CQRS_lib.Data
 {
-    public class APIDbContext : DbContext
+    public class APIDbContext : IdentityDbContext<AppUser>
     {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }

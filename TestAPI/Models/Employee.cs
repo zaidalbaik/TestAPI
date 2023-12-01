@@ -38,7 +38,6 @@ namespace TestAPI.Models
         [JsonPropertyName("imagePath")]
         public string? ImagePath { get; set; }
 
-        [SwaggerSchema(ReadOnly = true)]
         public Department? Department { get; set; } // Navigation property to represent the Department relationship
         public bool IsDeleted { get; set; }
         public DateTime? DateDeleted { get; set; }

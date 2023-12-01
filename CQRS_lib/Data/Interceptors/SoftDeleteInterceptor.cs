@@ -1,4 +1,4 @@
-﻿using CQRS_lib.Models.Contract;
+﻿using CQRS_lib.Data.Models.Contract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 

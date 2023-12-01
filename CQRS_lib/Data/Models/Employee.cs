@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using CQRS_lib.Models.Contract;
+using CQRS_lib.Data.Models.Contract;
 
-namespace CQRS_lib.Models
+namespace CQRS_lib.Data.Models
 {
     public class Employee : ISoftDeleteable
     {
@@ -36,6 +37,8 @@ namespace CQRS_lib.Models
         [JsonPropertyName("imagePath")]
         public string? ImagePath { get; set; }
 
+
+        //[IgnoreDataMember]
         public Department? Department { get; set; } // Navigation property to represent the Department relationship
         public bool IsDeleted { get; set; }
         public DateTime? DateDeleted { get; set; }

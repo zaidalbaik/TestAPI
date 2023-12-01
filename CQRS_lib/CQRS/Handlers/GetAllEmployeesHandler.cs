@@ -5,7 +5,7 @@ using MediatR;
 
 namespace CQRS_lib.CQRS.Handlers
 {
-    public class GetAllEmployeesHandler : IRequestHandler<GetAllEmployeesQuery, List<Employee>>
+    public class GetAllEmployeesHandler : IRequestHandler<GetAllEmployeesQuery, List<EmployeeDTO>>
     {
         private readonly APIDbContext _context;
         public GetAllEmployeesHandler(APIDbContext context)
@@ -13,9 +13,28 @@ namespace CQRS_lib.CQRS.Handlers
             _context = context;
         }
 
-        public async Task<List<Employee>> Handle(GetAllEmployeesQuery request, CancellationToken cancellationToken)
+        public async Task<List<EmployeeDTO>> Handle(GetAllEmployeesQuery request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(_context.Employees.ToList());
+            var emps = from employee in _context.Employees
+                       join department in _context.Departments
+                       on employee.DepartmentId equals department.DepartmentId
+                       select new EmployeeDTO
+                       {
+                           Id = employee.Id,
+                           FirstName = employee.FirstName,
+                           LastName = employee.LastName,
+                           Salary = employee.Salary, 
+                           Email = employee.Email,
+                           HireDate = employee.HireDate,
+                           PhoneNumber = employee.PhoneNumber, 
+                           Department = new DepartmentDTO()
+                           {
+                               Id = department.DepartmentId,
+                               Name = department.DepartmentName
+                           }
+                       };
+
+            return await Task.FromResult(emps.ToList());
         }
     }
 }

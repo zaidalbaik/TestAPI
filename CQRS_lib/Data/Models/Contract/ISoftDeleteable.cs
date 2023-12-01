@@ -1,4 +1,4 @@
-﻿namespace CQRS_lib.Models.Contract
+﻿namespace CQRS_lib.Data.Models.Contract
 {
     public interface ISoftDeleteable
     {

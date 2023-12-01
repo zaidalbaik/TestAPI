@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CQRS_lib.Models
+namespace CQRS_lib.Data.Models
 {
     public class Department
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CQRS_lib.Models;
+using CQRS_lib.Data.Models;
 
 namespace CQRS_lib.Data.Config
 {

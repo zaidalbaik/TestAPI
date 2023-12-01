@@ -1,14 +1,17 @@
 ﻿using CQRS_lib.CQRS.Commands;
 using CQRS_lib.CQRS.Queries;
 using CQRS_lib.Data;
+using CQRS_lib.Data.Models;
 using CQRS_lib.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 namespace TestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeesController : ControllerBase
     {
         private readonly APIDbContext _dbContext;
@@ -19,12 +22,32 @@ namespace TestAPI.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> AllEmployees()
+        [HttpGet("CQRS")]
+        public async Task<IActionResult> AllEmployeesWithCQRS()
         {
             try
             {
                 var emps = await _mediator.Send(new GetAllEmployeesQuery());
+                if (emps == null)
+                    return BadRequest();
+
+                return Ok(emps);
+            }
+            catch (Exception e)
+            {
+                //Handling Errors 
+
+                Console.WriteLine(e.Message);
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Employee>>> AllEmployees()
+        {
+            try
+            {
+                var emps = await _dbContext.Employees.Include(e => e.Department).ToListAsync();
                 if (emps == null)
                     return BadRequest();
 
@@ -65,7 +88,7 @@ namespace TestAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> InsertEmployee([FromForm] Employee employee)
+        public async Task<IActionResult> InsertEmployee([FromBody] NewEmployeeDTO employee)
         {
             try
             {
